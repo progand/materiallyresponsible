@@ -43,13 +43,13 @@ class MyItemsCommand(BaseCommand):
             elif self.request['get'].value=='names':
                 self.printNames()
             elif self.request['get'].value=='types':
-                print Item.itemsToJSON(Item.getDistinctTypes()) 
+                self.printTypes()
             elif self.request['get'].value=='transfer_where':
-                print Item.itemsToJSON(Item.getDistinctTransferWhere()) 
+                self.printTransferWhere() 
             elif self.request['get'].value=='who_took':
-                print Item.itemsToJSON(Item.getDistinctWhoTook())  
+                self.printWhoTook()  
             elif self.request['get'].value=='who_on_account':
-                print Item.itemsToJSON(Item.getDistinctWhoOnAccount()) 
+                self.printWhoOnAccount() 
         else:      
             html = open(config.DOCUMENT_ROOT+"html/my_items.html")  
             print "Content-Type: text/html"
@@ -61,8 +61,43 @@ class MyItemsCommand(BaseCommand):
         print Item.itemsToJSON(Item.getAll()) 
         
     def printNames(self):
+        term = None
+        if self.request.has_key('term'):
+            term = self.request['term'].value
         print "Content-Type: text/javascript"
         print 
-        print Item.itemsToJSON(Item.getDistinctNames())  
+        print Item.itemsToJSON(Item.getDistinctNames(term))  
+        
+    def printTypes(self):
+        term = None
+        if self.request.has_key('term'):
+            term = self.request['term'].value
+        print "Content-Type: text/javascript"
+        print 
+        print Item.itemsToJSON(Item.getDistinctTypes(term))  
+        
+    def printTransferWhere(self):
+        term = None
+        if self.request.has_key('term'):
+            term = self.request['term'].value
+        print "Content-Type: text/javascript"
+        print 
+        print Item.itemsToJSON(Item.getDistinctTransferWhere(term))  
+        
+    def printWhoTook(self):
+        term = None
+        if self.request.has_key('term'):
+            term = self.request['term'].value
+        print "Content-Type: text/javascript"
+        print 
+        print Item.itemsToJSON(Item.getDistinctWhoTook(term))  
+        
+    def printWhoOnAccount(self):
+        term = None
+        if self.request.has_key('term'):
+            term = self.request['term'].value
+        print "Content-Type: text/javascript"
+        print 
+        print Item.itemsToJSON(Item.getDistinctWhoOnAccount(term))  
         
     

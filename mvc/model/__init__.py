@@ -95,33 +95,39 @@ class Item(object):
         return result
     getAll = staticmethod(getAll)
     
-    def getDistinct(fieldName):
+    def getDistinct(fieldName,term):
         gateway = Gateway()
-        matrix =  gateway.getMatrix("select min(id) as id, "+fieldName+" from items group by "+fieldName)
+        #matrix =  gateway.getMatrix("select min(id) as id, "+fieldName+" from items group by "+fieldName)  
+        query =  "select "+fieldName+" from items " 
+        if term is not None:
+            query += " where "+fieldName+" like '"+term+"%'"  
+        query +=  " order by "+fieldName         
+        matrix =  gateway.getMatrix(query)        
         result = []
         for row in matrix:
-            result.append((row[0],row[1]))
+            #result.append((row[0],row[1]))
+            result.append(row[0])
         return result   
     getDistinct = staticmethod(getDistinct)
     
-    def getDistinctNames():        
-        return Item.getDistinct('name')   
+    def getDistinctNames(term=None):        
+        return Item.getDistinct('name',term)   
     getDistinctNames = staticmethod(getDistinctNames)
     
-    def getDistinctTypes():        
-        return Item.getDistinct('type')   
+    def getDistinctTypes(term=None):        
+        return Item.getDistinct('type',term)   
     getDistinctTypes = staticmethod(getDistinctTypes)
     
-    def getDistinctTransferWhere():        
-        return Item.getDistinct('transfer_where')   
+    def getDistinctTransferWhere(term=None):        
+        return Item.getDistinct('transfer_where',term)   
     getDistinctTransferWhere = staticmethod(getDistinctTransferWhere)
     
-    def getDistinctWhoTook():        
-        return Item.getDistinct('who_took')   
+    def getDistinctWhoTook(term=None):        
+        return Item.getDistinct('who_took',term)   
     getDistinctWhoTook = staticmethod(getDistinctWhoTook)
     
-    def getDistinctWhoOnAccount():        
-        return Item.getDistinct('who_on_account')   
+    def getDistinctWhoOnAccount(term=None):        
+        return Item.getDistinct('who_on_account',term)   
     getDistinctWhoOnAccount = staticmethod(getDistinctWhoOnAccount)
     
     def toJSON(self):
