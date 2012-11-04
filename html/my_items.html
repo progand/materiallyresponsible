@@ -3,17 +3,23 @@
 <head>
 <title>My items</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="js/jquery-1.8.2.js"></script>
-<script src="js/jquery-ui-1.9.1.custom.js"></script>
-<script src="js/my_items.js"></script>
-<link href="css/ui-lightness/jquery-ui-1.9.1.custom.css"
-	rel="stylesheet" />
 
+<script src="js/handsontable/lib/jquery.min.js"></script>
+<script src="js/handsontable/jquery.handsontable.js"></script>
+<script src="js/handsontable/lib/bootstrap-typeahead.js"></script>
+<script src="js/handsontable/lib/jQuery-contextMenu/jquery.contextMenu.js"></script>
+<script src="js/handsontable/lib/jQuery-contextMenu/jquery.ui.position.js"></script>
+
+<link href="css/handsontable/jquery.handsontable.css" rel="stylesheet" />
+<link rel="stylesheet" media="screen" href="js/handsontable/lib/jQuery-contextMenu/jquery.contextMenu.css">
+	
+<script src="js/my_items.js"></script>
 </head>
 <body>
-	<h1>Autocomplete</h1>	
+	<h1>Autocomplete</h1>
 	<div class="ui-widget">
 		<label for="names">Names: </label> <input id="names" />
 	</div>
+	<div id='datatable'></div>	
 </body>
 </html>
