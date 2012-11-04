@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+#autocomplete {
+	width: 369px;
+	height: 71px;
+	padding: 211px 0 0 141px;	
+	margin: 30px auto;
+}
+
+.k-autocomplete {
+	width: 240px;
+	vertical-align: middle;
+}
